@@ -22,5 +22,14 @@ public class GuiceTest {
         Assertions.assertEquals("hey there",editor.getHelloDao().hello);
     }
 
+    @Test
+    public void testingWhetherOneModuleCanBeUsedByMultipleClassesTest(){
+        Injector injector = Guice.createInjector(new InjectorModule());
+        HelloService editor = injector.getInstance(HelloService.class);
+        Assertions.assertNotNull(editor.getHelloDao());
+        Assertions.assertEquals("hey there",editor.getHelloDao().hello);
+    }
+
+
 
 }
