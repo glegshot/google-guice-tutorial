@@ -1,8 +1,8 @@
 package io.googleguice.practice;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
 import com.google.inject.name.Names;
-import com.google.inject.name.Named;
 
 public class InjectorModule extends AbstractModule {
 
@@ -12,4 +12,10 @@ public class InjectorModule extends AbstractModule {
         bind(SpellChecker.class).annotatedWith(Names.named("OSXWord")).to(OSXSpellChecker.class);
         bind(SpellChecker.class).annotatedWith(Names.named("WinWord")).to(WinWordSpellChecker.class);
     }
+
+    @Provides
+    public HelloDao getHelloDao(){
+        return new HelloDao("hey there");
+    }
+
 }
